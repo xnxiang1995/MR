@@ -54,8 +54,6 @@ for (qaq in 1:length(exp_dat_ids)) {
   d3<- try(fread(paste0(getwd(),"/",FileNames[qaq]),fill=TRUE),silent = T)
   
   d3$PHENO <- exps[qaq]
-  #names(d3)[names(d3) == 'MarkerName'] <- 'SNP'###强制将MarkerName改为SNP
-  
   d3<-format_data(d3,
                  type="exposure",
                  phenotype_col = "PHENO",
@@ -181,7 +179,6 @@ for (qaq in 1:length(exp_dat_ids)) {
                                                  "Number of cigarettes previously smoked daily",
                                                  "Nicotine dependence smoking cigarettes per day",
                                                  "Pack years of smoking preview only",
-                                                 "Diabetes mellitus type 1",
                                                  "Diabetes mellitus type 2",
                                                  "Type II diabetes",
                                                  "Type 2 diabetes",
@@ -190,7 +187,28 @@ for (qaq in 1:length(exp_dat_ids)) {
                                                  "Diabetes diagnosed by doctor",
                                                  "Self-reported diabetes",
                                                  "Alcohol dependence symptom count",
-                                                 "viral infection"),
+                                                 "Alcohol consumption drinkers vs non drinkers",
+                                                 "Alcohol consumption heavy vs lightnon drinkers",
+                                                 "Alcohol consumption",
+                                                 "Alcohol consumption in current drinkers",
+                                                 "Alcohol consumption drinks per week",
+                                                 "Alcohol consumption over the past year",
+                                                 "Cause of death: fatty liver",
+                                                 "Nonalcoholic fatty liver disease",
+                                                 "Fibrosis and cirrhosis of liver",
+                                                 "Liver cirrhosis",
+                                                 "Hepatitis C induced liver fibrosis",
+                                                 "Hepatitis C virus HCV induced liver fibrosis",
+                                                 "Self-reported hepatitis c",
+                                                 "Hepatitis c",
+                                                 "Hepatitis c chronic",
+                                                 "Chronic hepatitis C infection",
+                                                 "Liver fibrosis severity in HIVhepatitis C co infection",
+                                                 "Self-reported hepatitis b",
+                                                 "Chronic hepatitis B progressio",
+                                                 "Chronic hepatitis B progression in individuals age 35 or older",
+                                                 "Chronic hepatitis B infection",
+                                                 "Hepatitis b chronic"),
                                     pheno_data=result,
                                     data = dat,
                                     exp = exp_data,
@@ -291,4 +309,4 @@ for (qaq in 1:length(exp_dat_ids)) {
 file.remove("d.csv")
 fs=list.files("./", pattern = "csv",full.names = TRUE) 
 df = map_dfr(fs, read.csv)
-write.csv(df,"FinnGen_Immune_to_HCC_500_0.1_1E-5_Expresso.csv")
+write.csv(df,"FinnGen_Immune_to_HCC_500_0.01_1E-5_Expresso.csv")
